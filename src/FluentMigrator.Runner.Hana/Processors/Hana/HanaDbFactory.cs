@@ -60,6 +60,7 @@ namespace FluentMigrator.Runner.Processors.Hana
         /// </remarks>
         private static IEnumerable<TestEntry> GetTestEntries()
         {
+            yield return new TestEntry("Sap.Data.Hana.Net.v8.0", "Sap.Data.Hana.HanaFactory");
             yield return new TestEntry("Sap.Data.Hana", "Sap.Data.Hana.HanaFactory");
             yield return new TestEntry("Sap.Data.Hana.v4.5", "Sap.Data.Hana.HanaFactory");
         }

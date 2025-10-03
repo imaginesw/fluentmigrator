@@ -16,6 +16,18 @@
     <ProjectReference Include="..\FluentMigrator\FluentMigrator.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Sap.Data.Hana.Net.v8.0">
+      <HintPath>..\..\..\HanaTest\lib\Sap.Data.Hana.Net.v8.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Bloqueia os targets/props do StrongNameSigner neste projeto -->
+    <PackageReference Include="Brutal.Dev.StrongNameSigner" Version="3.5.1"
+                      ExcludeAssets="build;buildTransitive"
+                      PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Update="JetBrains.Annotations" Version="2024.3.0" />
   </ItemGroup>
 </Project>

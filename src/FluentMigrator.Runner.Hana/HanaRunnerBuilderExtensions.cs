@@ -45,5 +45,24 @@ namespace FluentMigrator.Runner
 
             return builder;
         }
+
+        /// <summary>
+        /// Return services required for Hana support in .NET Core applications
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static IMigrationRunnerBuilder AddHanaNetCore(this IMigrationRunnerBuilder builder)
+        {
+            builder.Services
+                .AddScoped<HanaDbFactory>()
+                .AddScoped<HanaCoreProcessor>()
+                .AddScoped<IMigrationProcessor>(sp => sp.GetRequiredService<HanaCoreProcessor>())
+                .AddScoped<HanaQuoter>()
+                .AddScoped<IHanaTypeMap>(sp => new HanaTypeMap())
+                .AddScoped<HanaGenerator>()
+                .AddScoped<IMigrationGenerator>(sp => sp.GetRequiredService<HanaGenerator>());
+
+            return builder;
+        }
     }
 }
